@@ -3,35 +3,43 @@ import java.util.Scanner;
 
 public class BigFib {
 
-	
-	public BigFib(BigInteger number) {
-		// TODO Auto-generated constructor stub
-	}
 
-	public BigInteger BigFib(BigInteger n) 
+	public static BigInteger Fib(int n) 
 	{
-		BigInteger fib = new BigInteger("1");
-		BigInteger mult;
-		if (n.equals(1) || n.equals(2))
+		BigInteger fib = new BigInteger("0");
+		if (n == 0)
 		{
-			System.out.println(fib);
-			return fib;
+			//return fib;
+		}
+		else if (n == 1)
+		{
+			fib = new BigInteger("1");
 		}
 		else 
 		{
-			BigInteger mult1 = (BigFib(new BigInteger("n/2 - 1"))).multiply(new BigInteger("2"));
-			BigInteger two = BigFib(new BigInteger("n/2")).add(mult1);
-			fib = two.multiply((BigFib(new BigInteger("n/2")).add(mult1)));
+			if (n % 2 == 0)
+			{
+				BigInteger mult = Fib(2 * (n/2 - 1));
+				BigInteger two = Fib(n/2).add(mult);
+				fib = fib.add(two.multiply((Fib(n/2).add(mult))));
+			}
+			else 
+			{
+				BigInteger first = Fib(n / 2).pow(2);
+				BigInteger second = Fib((n / 2) - 1).pow(2);
+				fib = fib.add(first.add(second));
+			}
 		}
+		System.out.println(fib);
 		return fib;
 	}
 
 	public static void main(String[] args)
 	{
 		Scanner scan = new Scanner(System.in);
-		BigInteger number = BigInteger.valueOf(scan.nextInt());
-		BigFib result = new BigFib(number);
-		System.out.println(result);
+		int number = scan.nextInt();
+		BigInteger result = Fib(number);
+		System.out.println("hmghjg " + result);
 		scan.close();
 	}
 }
