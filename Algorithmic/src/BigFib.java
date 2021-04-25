@@ -19,15 +19,15 @@ public class BigFib {
 		{
 			if (n % 2 == 0)
 			{
-				BigInteger mult = Fib(2 * (n/2 - 1));
-				BigInteger two = Fib(n/2).add(mult);
-				fib = fib.add(two.multiply((Fib(n/2).add(mult))));
+				BigInteger mult = Fib(n / 2 - 1);
+				BigInteger two = Fib(n / 2 + 1).add(mult);
+				fib = two.multiply((Fib(n/2)));
 			}
 			else 
 			{
 				BigInteger first = Fib(n / 2).pow(2);
-				BigInteger second = Fib((n / 2) - 1).pow(2);
-				fib = fib.add(first.add(second));
+				BigInteger second = Fib(n / 2 - 1).pow(2);
+				fib = first.add(second);
 			}
 		}
 		System.out.println(fib);
