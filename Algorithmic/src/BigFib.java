@@ -20,17 +20,17 @@ public class BigFib {
 			if (n % 2 == 0)
 			{
 				BigInteger mult = Fib(n / 2 - 1);
-				BigInteger two = Fib(n / 2 + 1).add(mult);
-				fib = two.multiply((Fib(n/2)));
+				BigInteger one = Fib(n / 2);
+				BigInteger two = (mult.multiply(new BigInteger("2"))).add(one);
+				fib = two.multiply(one);
 			}
 			else 
 			{
-				BigInteger first = Fib(n / 2).pow(2);
-				BigInteger second = Fib(n / 2 - 1).pow(2);
+				BigInteger first = Fib((n - 1) / 2).pow(2);
+				BigInteger second = Fib((n + 1) / 2).pow(2);
 				fib = first.add(second);
 			}
 		}
-		System.out.println(fib);
 		return fib;
 	}
 
@@ -39,7 +39,7 @@ public class BigFib {
 		Scanner scan = new Scanner(System.in);
 		int number = scan.nextInt();
 		BigInteger result = Fib(number);
-		System.out.println("hmghjg " + result);
+		System.out.println(result);
 		scan.close();
 	}
 }
